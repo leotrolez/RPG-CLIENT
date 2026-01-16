@@ -1,0 +1,703 @@
+OutfitCreature < Panel
+  focusable: true
+  image-source: /images/ui/panel_map
+  image-border: 6
+  phantom: false
+
+  border-width: 1
+  border-color: alpha
+  $focus:
+    border-color: #ffffff
+  @onClick: modules.game_outfit.selectOutfit(self)
+
+  UICreature
+    id: outfit
+    shader: default
+    phantom: true
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.verticalCenter
+    size: 70 70
+    margin-bottom: 12
+    padding:3
+
+  Label
+    id: title
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin: 3
+    text-align: center
+
+PresetOutfitPanel < Panel
+  image-source: /images/ui/window
+  image-border: 6
+  padding-left: 5
+  padding-right: 5
+  padding: 3
+  height: 100
+  margin-top: 6
+  focusable: true
+
+  border-color: #00000055
+  border-width:0
+  text-offset: 0 2
+  text-align: top
+  image-source: /images/ui/window
+  image-border: 4
+  image-border-top: 17
+
+  $focus:
+    border-color: white
+    border-width:1
+
+  Label
+    id: title
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    text-align: center
+
+  UICreature
+    id: creature
+    shader: default
+    size: 64 64
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.right: parent.horizontalCenter
+    margin-right: 10
+    margin-top: 8
+    margin-bottom: 1
+    padding: 2
+
+  UICreature
+    id: mount
+    shader: default
+    size: 64 64
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.horizontalCenter
+    margin-top: 8
+    margin-left: 10
+    margin-bottom: 1
+    padding: 2
+
+OutfitButtonBox < ButtonBoxRounded
+  font: verdana-11px-rounded
+  color: #f55e5ebb
+  size: 106 22
+  text-offset: 0 2
+  text-align: center
+
+  $checked:
+    color: white
+
+  $disabled:
+    color: #666666ff
+    image-color: #ffffff88
+
+OutfitTurnButton < Button
+  size: 20 20
+  image-clip: 0 0 20 20
+  padding: 0
+
+  $hover !disabled:
+    image-clip: 0 0 20 20
+
+  $pressed:
+    image-clip: 0 20 20 20
+
+OutfitPanel < Panel
+  text-align: top
+  text-offset: 0 2
+  image-source: /images/ui/miniwindow
+  image-border: 4
+  image-border-top: 23
+  image-border-bottom: 4
+  padding: 8
+
+OutfitTabButton < ButtonBox
+  height: 20
+
+CheckPanel < Panel
+  image-source: /images/ui/panel_flat
+  image-border: 2
+  image-border-top: 3
+  image-border-bottom: 3
+  height: 20
+
+Check < Panel
+  image-source: /images/ui/panel_flat
+  image-border: 2
+  image-border-top: 3
+  image-border-bottom: 3
+  padding: 5
+  height: 22
+
+  CheckBox
+    id: value
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+
+OutfitSelectorPanel < Panel
+  size: 125 20
+  Label
+    id: label
+    text: Outfit name
+    text-align: center
+    anchors.fill: parent
+    margin-left: 6
+    margin-right: 3
+    image-source: /images/ui/panel_flat
+    image-border: 2
+    text: -
+    color: white
+    font: verdana-11px-antialised
+
+  UICreature
+    shader: default
+    id: creature
+    size: 80 80
+    anchors.top: parent.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 1
+    visible: false
+
+BarSelectorPanel < Panel
+  size: 125 120
+  
+  Label
+    id: title
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text-align: center
+
+  UIWidget
+    id: bar
+    anchors.centerIn: parent
+  
+  PreviousButton  
+    id: prevButton
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    
+  NextButton
+    id: nextButton
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+  
+  Label
+    id: label
+    text: -
+    text-align: center
+    anchors.left: prevButton.right
+    anchors.right: nextButton.left
+    anchors.top: prevButton.top
+    anchors.bottom: parent.bottom
+    margin-left: 2
+    margin-right: 2
+    image-source: /images/ui/panel_flat
+    image-border: 2    
+
+MainWindow
+  !text: tr('Customise Character')
+  size: 680 580
+
+  @onEnter: modules.game_outfit.accept()
+  @onEscape: modules.game_outfit.destroy()
+
+  // Creature Boxes
+  OutfitPanel
+    id: preview
+    !text: 'Preview'
+    width: 370
+    height: 180
+    anchors.left: parent.left
+    anchors.top: parent.top
+
+    CheckPanel
+      width: 110
+      id: preview1pan
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin: 0
+      margin-top: 16
+
+    CheckPanel
+      id: preview2pan
+      anchors.top: prev.bottom
+      anchors.left: prev.left
+      anchors.right: prev.right
+      margin-top: 6
+
+    CheckPanel
+      id: preview3pan
+      anchors.top: prev.bottom
+      anchors.left: prev.left
+      anchors.right: prev.right
+      margin-top: 6
+
+    CheckPanel
+      id: preview4pan
+      anchors.top: prev.bottom
+      anchors.left: prev.left
+      anchors.right: prev.right
+      margin-top: 6
+
+    CheckPanel
+      id: preview5pan
+      anchors.top: prev.bottom
+      anchors.left: prev.left
+      anchors.right: prev.right
+      margin-top: 6
+
+    CheckPanel
+      id: preview6pan
+      anchors.top: prev.bottom
+      anchors.left: prev.left
+      anchors.right: prev.right
+      margin-top: 6
+
+    CheckBox
+      id: showoutfit
+      anchors.top: preview1pan.top
+      anchors.left: preview1pan.left
+      anchors.right: preview1pan.right
+      margin-left: 4
+      margin-top: 4
+      !text: 'Show Outfit'
+      checked: true
+
+    CheckBox
+      id: showmount
+      anchors.top: preview2pan.top
+      anchors.left: preview2pan.left
+      anchors.right: preview2pan.right
+      margin-left: 4
+      margin-top: 4
+      !text: tr('Show Mount')
+
+    CheckBox
+      id: showwings
+      anchors.top: preview3pan.top
+      anchors.left: preview3pan.left
+      anchors.right: preview3pan.right
+      margin-left: 4
+      margin-top: 4
+      !text: tr('Show Wings')
+
+    CheckBox
+      id: showaura
+      anchors.top: preview4pan.top
+      anchors.left: preview4pan.left
+      anchors.right: preview4pan.right
+      margin-left: 4
+      margin-top: 4
+      !text: tr('Show Aura')
+
+    CheckBox
+      id: showshader
+      anchors.top: preview5pan.top
+      anchors.left: preview5pan.left
+      anchors.right: preview5pan.right
+      margin-left: 4
+      margin-top: 4
+      !text: tr('Show Shader')
+
+    CheckBox
+      id: animated
+      anchors.top: preview6pan.top
+      anchors.left: preview6pan.left
+      anchors.right: preview6pan.right
+      margin-left: 4
+      margin-top: 4
+      !text: 'Animated'
+      visible: true
+
+    FlatPanel
+      id: outfits
+      anchors.top: preview1pan.top
+      anchors.bottom: parent.bottom
+      anchors.left: preview1pan.right
+      anchors.right: parent.right
+      margin: 1
+      margin-top: 0
+      margin-left: 6
+
+    OutfitTurnButton
+      id: turnLeft
+      image-source: /images/ui/arrow_turn_left
+      anchors.left: outfits.left
+      anchors.bottom: outfits.bottom
+      margin-left: 4
+      margin-bottom: 4
+
+    OutfitTurnButton
+      id: turnRight
+      image-source: /images/ui/arrow_turn_right
+      anchors.right: outfits.right
+      anchors.bottom: outfits.bottom
+      margin-right: 4
+      margin-bottom: 4
+
+    UICreature
+      shader: default
+      id: creature
+      anchors.left: outfits.left
+      anchors.bottom: outfits.bottom
+      margin-bottom: 25
+      margin-left: 25
+      size: 120 120
+      padding: 20
+
+
+  OutfitPanel
+    id: filter
+    anchors.top: parent.top
+    anchors.left: preview.right
+    anchors.right: parent.right
+    height: 54
+    margin-left: 8
+    !text: 'Filter Outfits'
+
+    Label
+      id: searchLabel
+      text: Search:
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-top: 20
+      margin-left: 3
+
+    TextEdit
+      id: searchInput
+      anchors.left: prev.right
+      anchors.verticalCenter: prev.verticalCenter
+      margin-left: 6
+      margin-right: 3
+      width: 180
+      visible: true
+      enabled: true
+      text:
+      color: white
+      @onKeyPress: modules.game_outfit.onSearch()
+
+    Button
+      anchors.right: parent.right
+      anchors.top: prev.top
+      anchors.bottom: prev.bottom
+      size: 24 24
+      text: x
+      @onClick: modules.game_outfit.clearSearch()
+
+  ComboBox
+    id: typeCombo
+    margin-top: 8
+    anchors.left: filter.left
+    anchors.right: filter.right
+    anchors.top: filter.bottom
+    text-align: left
+    text-align: center
+
+  OutfitPanel
+    id: presetOptions
+    anchors.top: prev.bottom
+    anchors.left: preview.right
+    anchors.right: parent.right
+    height: 54
+    margin-top: 8
+    margin-left: 8
+    padding: 6
+    visible: false
+    !text: 'Manage Presets'
+
+    Button
+      id: new
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 2
+      margin-top: 18
+      !text: 'new'
+      size: 60 20
+      @onClick: modules.game_outfit.presetAction("new")
+    Button
+      id: rename
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-left: 6
+      !text: 'rename'
+      size: 60 20
+      @onClick: modules.game_outfit.presetAction("rename")
+    Button
+      id: save
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-left: 6
+      !text: 'save'
+      size: 60 20
+      @onClick: modules.game_outfit.presetAction("save")
+
+    Button
+      id: delete
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-left: 6
+      !text: 'delete'
+      size: 60 20
+      @onClick: modules.game_outfit.presetAction("delete")
+
+  FlatPanel
+    id: presetPanel
+    anchors.left: filter.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 8
+    anchors.bottom: separator.top
+    margin-bottom: 8
+    padding: 3
+    visible: false
+
+    ScrollablePanel
+      id: list
+      margin-top: 2
+      margin-bottom: 2
+      margin-left: 2
+      margin-right: 18
+      anchors.fill: parent
+      vertical-scrollbar: scroll
+      layout:
+        type: verticalBox
+
+    VerticalScrollBar
+      id: scroll
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin: 1
+      step: 50
+      pixels-scroll: true
+
+  FlatPanel
+    id: outfits
+    anchors.left: typeCombo.left
+    anchors.right: parent.right
+    anchors.top: typeCombo.bottom
+    margin-top: 8
+    anchors.bottom: separator.top
+    margin-bottom: 8
+    padding: 3
+
+    ScrollablePanel
+      id: list
+      margin-top: 2
+      margin-bottom: 2
+      margin-left: 2
+      anchors.fill: parent
+      vertical-scrollbar: outfitsScroll
+
+      layout:
+        type: grid
+        cell-size: 120 110
+        cell-spacing: 5
+        num-columns: 2
+        flow: true
+
+    VerticalScrollBar
+      id: outfitsScroll
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin: 1
+      step: 50
+      pixels-scroll: true
+
+  OutfitPanel
+    id: appearance
+    !text: 'Change Appearance'
+    anchors.top: preview.bottom
+    anchors.left: preview.left
+    anchors.right: preview.right
+    anchors.bottom: separator.top
+    margin-top: 10
+    margin-bottom: 8
+
+  ButtonBox
+    id: head
+    !text: tr('Head')
+    anchors.top: appearance.top
+    anchors.left: appearance.left
+    margin-top: 22
+    margin-left: 8
+    checked: true
+    width: 88
+
+  ButtonBox
+    id: primary
+    !text: tr('Primary')
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 2
+    width: 88
+
+  ButtonBox
+    id: secondary
+    !text: tr('Secondary')
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 2
+    width: 88
+
+  ButtonBox
+    id: detail
+    !text: tr('Detail')
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 2
+    width: 87
+
+  Panel
+    id: randomizeButton
+    !text: tr('Randomize')
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-bottom: 5
+    color: white
+
+  ButtonBox
+    id: randomizeButton1
+    !text: tr('All')
+    !tooltip: tr('Randomize characters cosmetics')
+    anchors.left: randomizeButton.right
+    anchors.bottom: parent.bottom
+    width: 44
+    margin-left: 7
+    @onClick: modules.game_outfit.randomizeAll()
+    color: orange
+
+  ButtonBox
+    id: randomizeButton2
+    !text: tr('Outfit')
+    !tooltip: tr('Randomize characters outfit + color')
+    anchors.left: randomizeButton1.right
+    anchors.bottom: parent.bottom
+    margin-left: 7
+    width: 44
+    @onClick: modules.game_outfit.randomizeOutfit()
+    color: orange
+
+  ButtonBox
+    id: randomizeButton3
+    !text: tr('Color')
+    !tooltip: tr('Randomize characters outfit color')
+    anchors.left: randomizeButton2.right
+    anchors.bottom: parent.bottom
+    margin-left: 7
+    width: 44
+    @onClick: modules.game_outfit.randomizeColor()
+    color: orange
+
+  Panel
+    id: colorBoxPanel
+    image-source:  /images/ui/panel_content
+    image-border:1
+    padding: 6
+    anchors.top: head.bottom
+    anchors.left: head.left
+    anchors.right: appearance.right
+    height: 135
+    margin-right: 8
+    margin-left: 0
+    margin-top: 0
+    layout:
+      type: grid
+      cell-size: 16 16
+      cell-spacing: 2
+      num-columns: 19
+      num-lines: 7
+
+  Panel
+    id: extensions
+    margin-bottom: 6
+    margin-right: 5
+    margin-left: 3
+    margin-top: 6
+    anchors.top: colorBoxPanel.bottom
+    anchors.left: addon1pan.right
+    anchors.right: appearance.right
+    layout:
+      type: verticalBox
+      fit-children: true
+      spacing:2
+
+  CheckPanel
+    id: addon1pan
+    anchors.top: colorBoxPanel.bottom
+    anchors.left: colorBoxPanel.left
+    width: 78
+    margin-top: 6
+
+  CheckPanel
+    id: addon2pan
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+    anchors.right: prev.right
+    margin-top: 3
+
+  CheckPanel
+    id: addon3pan
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+    anchors.right: prev.right
+    margin-top: 3
+
+  CheckBox
+    id: addon1
+    anchors.top: addon1pan.top
+    anchors.left: addon1pan.left
+    anchors.right: addon1pan.right
+    margin-left: 4
+    margin-top: 4
+    enabled: false
+    !text: tr('Addon 1')
+
+  CheckBox
+    id: addon2
+    anchors.top: addon2pan.top
+    anchors.left: addon2pan.left
+    anchors.right: addon2pan.right
+    margin-left: 4
+    margin-top: 4
+    !text: tr('Addon 2')
+    enabled: false
+
+  CheckBox
+    id: addon3
+    anchors.top: addon3pan.top
+    anchors.left: addon3pan.left
+    anchors.right: addon3pan.right
+    margin-left: 4
+    margin-top: 4
+    !text: tr('Addon 3')
+    enabled: false
+
+  Button
+    id: outfitOkButton
+    !text: tr('Ok')
+    width: 64
+    anchors.right: next.left
+    anchors.bottom: parent.bottom
+    margin-right: 16
+    @onClick: modules.game_outfit.accept()
+
+  Button
+    id: outfitCancelButton
+    !text: tr('Cancel')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_outfit.destroy()
+
+  HorizontalSeparator
+    id: separator
+    anchors.right: parent.right
+    anchors.left: parent.left
+    anchors.bottom: outfitOkButton.top
+    margin-bottom: 8

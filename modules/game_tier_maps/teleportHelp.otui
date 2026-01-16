@@ -1,0 +1,41 @@
+Window
+  id: helpWindow
+  size: 330 270
+  image-source: /images/ui/panel_map
+  image-border: 4
+  color: #FFFFFF
+  text: How Waystone Teleporter Works
+  anchors.centerIn: parent
+  @onEscape: hideWindow()
+  @onExit: hideWindow()
+
+  TextEdit
+    id: helpText
+    read-only: true
+    wrap: true
+    anchors.fill: parent
+    text: |+
+      1. Drag your Waystone rune into the slot.  
+      2. Click "Open Portal" to open a portal.  
+      3. Teleports will appear 2 sqm far away.
+      4. Make sure you have sufficient space on house. 
+      5. Step on the teleport to be teleported.  
+      ---
+      - Teleports auto-expire after 60 seconds.  
+      - Press "Close" to cancel.  
+      - Press "Wrap" to wrap the item.
+      - Waystone can only be used at house.
+      - Multiple players can enter.
+      - Instance duration is 30 minutes.
+      - Portal Visual can be selected.
+      - Portal Visual can be bought in store.
+
+  Button
+    id: btnClose
+    text: "Close"
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    width: 80
+    height: 28
+    margin-bottom: 4
+    @onClick: closeHelpWindow()

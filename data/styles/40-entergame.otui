@@ -1,0 +1,4 @@
+EnterGameWindow < StaticMainWindow
+  !text: tr('Enter Game')
+  size: 260 354
+  color: #F69300

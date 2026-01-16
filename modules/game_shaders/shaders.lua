@@ -1,0 +1,25 @@
+function init()
+	g_shaders.createOutfitShader("Enterprise", "/shaders/expand_vertex", "/shaders/shine15")
+    g_shaders.createOutfitShader("blue_loohs", "/shaders/expand_vertex", "/shaders/shine8")
+    g_shaders.createOutfitShader("bloohs_green", "/shaders/expand_vertex", "/shaders/bloohs_green")
+    g_shaders.createOutfitShader("bloohs_red", "/shaders/expand_vertex", "/shaders/bloohs_red")
+    g_shaders.createOutfitShader("bloohs_white", "/shaders/expand_vertex", "/shaders/bloohs_white")
+    g_shaders.createOutfitShader("blue_Dortmond", "/shaders/expand_vertex", "/shaders/shine11")
+    g_shaders.createOutfitShader("red_dortmond", "/shaders/expand_vertex", "/shaders/dortmond_red")
+    g_shaders.createOutfitShader("white_dortmond", "/shaders/expand_vertex", "/shaders/dortmond_white")
+    g_shaders.createOutfitShader("green_dortmond", "/shaders/expand_vertex", "/shaders/dortmond_green")
+    g_shaders.createOutfitShader("yellow_dortmond", "/shaders/expand_vertex", "/shaders/dortmond_yellow")
+	g_shaders.createOutfitShader("pink_energizer", "/shaders/expand_vertex", "/shaders/shine111")
+    g_shaders.createOutfitShader("blue_energizer", "/shaders/expand_vertex", "/shaders/energizer_blue")
+    g_shaders.createOutfitShader("red_energizer", "/shaders/expand_vertex", "/shaders/energizer_red")
+    g_shaders.createOutfitShader("yellow _energizer", "/shaders/expand_vertex", "/shaders/energizer_yellow")
+    g_shaders.createOutfitShader("white_Energizer", "/shaders/expand_vertex", "/shaders/energizer_white")
+    g_shaders.createOutfitShader("orange_energizer", "/shaders/expand_vertex", "/shaders/energizer_orange")
+    g_shaders.createOutfitShader("yellow_pixent", "/shaders/expand_vertex", "/shaders/shine122")
+    g_shaders.createOutfitShader("green_pixent", "/shaders/expand_vertex", "/shaders/pixent_green")
+    g_shaders.createOutfitShader("blue_pixent", "/shaders/expand_vertex", "/shaders/pixent_blue")
+	
+end
+
+function terminate()
+end

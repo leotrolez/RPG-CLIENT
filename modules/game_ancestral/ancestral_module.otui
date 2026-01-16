@@ -1,0 +1,279 @@
+StoreButton < UIButton
+  font: verdana-11px-antialised
+  text-offset: 42 0
+  text-align: left
+  background-color: alpha
+  height: 36
+  icon-rect: 5 0 32 32
+  $focus: 
+    background-color: #00000077
+    color: #ffffff
+
+  $hover focus:
+    background-color: #00000077
+    color: #ffffff
+
+  $hover !focus:
+    background-color: #00000044
+    color: #ffffff
+
+  $hover !checked:
+    background-color: #00000044
+    color: #ffffff
+
+  $disabled:
+    background-color: alpha
+    color: #ffffff22
+
+  $checked:
+    background-color: #00000077
+    color: #ffffff
+
+  $on !checked:
+    background-color: #00000077
+    color: #ffffff
+
+ProductButton < UIButton
+  font: verdana-11px-antialised
+  text-align: left
+  background-color: #00000022
+  size: 96 114
+  border: 1 #948b7f
+  margin-right: 2
+  margin-bottom: 2
+  $hover:
+    border: 1 #ffba00
+    background-color: #00000077
+
+  Label
+    id: productLabelTitle
+    text-align: center
+    text-offset: 0 0
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.left: parent.left
+    margin: 3
+    border: 1 #948b7f
+    height: 16
+    font: verdana-11px-antialised
+    background-color: #00000077
+
+  Label
+    id: productLabelImage
+    anchors.top: productLabelTitle.bottom
+    anchors.right: parent.right
+    anchors.left: parent.left
+    margin: 3
+    border: 1 #948b7f
+    size: 88 70
+
+  Label
+    id: productLabelTokenPrice
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    anchors.left: parent.left
+    text-align: center
+    text-offset: 0 0
+    margin: 3
+    border: 1 #948b7f
+    height: 16
+    font: verdana-11px-antialised
+    background-color: #00000077
+
+  Label
+    id: coinIcon
+    image-source: /images/ancestral/ancestral_coin
+    anchors.top: productLabelTokenPrice.top
+    anchors.left: parent.left
+    margin-left: 5
+    margin-top: 2
+    size: 12 12
+    opacity: 1.0
+
+
+
+MainWindow
+  id: storeWindow
+  size: 695 486
+  padding: 0
+  border: 1 #948b7f
+  image-source: /images/ancestral/texture_bg_lighter
+
+  @onEnter: modules.ancestral_module.onCloseStore()
+  @onEscape: modules.ancestral_module.onCloseStore()
+
+  Label
+    id: title
+    !text: tr('Ancestral Store')
+    text-align: center
+    font: verdana-11px-antialised
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    border: 1 #948b7f
+    height: 20
+  
+  Panel
+    id: balanceInfo
+    anchors.top: title.bottom
+    anchors.left: parent.left
+    margin-top: 0
+    size: 185 85
+    border: 1 #948b7f
+    align: center
+
+    Label
+      id: textYbalance
+      !text: tr('Ancestral Points:')
+      font: verdana-11px-antialised
+      text-align: center
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+
+    Label
+      id: coinBalance
+      !text: tr('                                               ')
+      font: verdana-11px-antialised
+      anchors.top: textYbalance.bottom
+      anchors.left: parent.left
+      height: 12
+      margin-top: 8
+      text-align: center
+
+    Label
+      id: coinIcon
+      anchors.top: coinBalance.top
+      anchors.left: coinBalance.right
+      image-source: /images/ancestral/ancestral_coin
+      margin-left: -75
+      size: 12 12
+      text-align: center
+
+    Label
+      id: textDescription
+      !text: tr('       Earn Ancestral Points')
+      font: verdana-11px-antialised
+      text-align: center
+      margin-top: 34
+      anchors.top: textYbalance.bottom
+      anchors.left: textYbalance.left
+    Label
+      id: textDescription
+      !text: tr('  completing Tasks for Armin.')
+      font: verdana-11px-antialised
+      text-align: center
+      margin-top: 44
+      anchors.top: textYbalance.bottom
+      anchors.left: textYbalance.left
+
+  Label
+    id: stCoinsTop
+    text-offset: -7 0
+    color: #ffffff
+    width: 92
+    anchors.top: balanceInfo.bottom
+    anchors.left: parent.left
+    icon-rect: 54 5 12 12
+    margin-top: 3
+
+  Label
+    id: acPoints
+    anchors.top: stCoinsTop.top
+    tooltip: Stp Coins
+    anchors.right: balanceInfo.right
+    icon-rect: 31 4 32 14
+    width: 92
+
+  Panel
+    id: indexDescription
+    size: 507 85
+    border: 1 #948b7f
+    anchors.top: balanceInfo.top
+    anchors.left: balanceInfo.right
+
+    Label
+      id: imageDesc
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 64 64
+      margin-top: 7
+      margin-left: 10
+
+    Label
+      id: titleDesc
+      font: verdana-11px-antialised
+      anchors.top: imageDesc.top
+      anchors.left: imageDesc.right
+      width: 300
+      margin-left: 10
+      margin-top: 12
+      text-wrap: true
+      text-auto-resize:true
+
+    Label
+      id: description
+      font: verdana-11px-antialised
+      text-wrap: true
+      text-auto-resize:true
+      anchors.top: titleDesc.bottom
+      anchors.left: imageDesc.right
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-left: 10
+      margin-top: 5
+
+
+
+  TextList
+    id: indexList
+    anchors.top: balanceInfo.bottom
+    anchors.left: parent.left
+    size: 185 334
+    background-color: alpha
+    border: 1 #948b7f
+    margin-top: 10
+
+
+  ScrollablePanel
+    id: productList
+    anchors.top: balanceInfo.bottom
+    anchors.left: indexList.right
+    size: 507 334
+    border: 1 #948b7f
+    padding: 3
+    padding-right: 10
+    margin-top: 10
+    margin-left: 3
+    vertical-scrollbar: productListScrollbar
+    layout:
+      type: grid
+      flow: true
+      cell-size: 96 114
+
+  VerticalScrollBar
+    id: productListScrollbar
+    height: 332
+    margin-top: 1
+    margin-right: 1
+    anchors.top: productList.top
+    anchors.right: productList.right
+    step: 14
+    pixels-scroll: true
+
+  Label
+    border: 1 #948b7f
+    height: 28
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+
+  ButtonShop
+    id: closeButton
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    margin-bottom: 3
+    !text: tr('Close Ancestral Store')
+    width: 150
+    color: #ffffff
+    @onClick: modules.ancestral_module.toggle()

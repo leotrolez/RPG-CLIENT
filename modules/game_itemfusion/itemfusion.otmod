@@ -1,0 +1,9 @@
+Module
+  name: game_itemfusion
+  description: Item Fusion
+  autoload: true
+  autoload-priority: 1003
+  sandboxed: false
+  scripts: [ itemfusion ]
+  @onLoad: init()
+  @onUnload: terminate()

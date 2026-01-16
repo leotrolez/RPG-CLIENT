@@ -1,0 +1,33 @@
+Window
+  size: 300 150
+  title: Yes/No Confirmation
+  image-source: /images/ui/panel_map3
+  image-border: 10
+  image-border-top: 40
+  image-border-bottom: 40
+  modal: true
+  movable: false
+  resizeable: false
+  padding: 10
+
+  Label
+    id: message
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text: "Do you want to fuse this items?"
+    auto-resize: true
+
+  Button
+    id: yesButton
+    text: "Yes"
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-left: 20
+
+  Button
+    id: noButton
+    text: "No"
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-right: 20

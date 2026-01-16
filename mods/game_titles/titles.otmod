@@ -1,0 +1,11 @@
+Module
+  name: game_titles
+  description: Titles for Monsters and Players
+  author: Avaji
+  website: none
+  sandboxed: true
+  autoload: true
+  autoload-priority: 1000
+  scripts: [ titles.lua ]
+  @onLoad: init()
+  @onUnload: terminate()

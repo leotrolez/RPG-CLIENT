@@ -1,0 +1,9 @@
+Module
+  name: client_reputation
+  description: Reputation System
+  author: Alexv45
+  website: https://opengamescommunity.com
+  autoload: true
+  scripts: [ reputation ]
+  @onLoad: init()
+  @onUnload: terminate()

@@ -1,0 +1,149 @@
+StatsPanel < Panel
+  height: 32
+
+StatsButton < Button
+  id: plusButton
+  anchors.top: parent.top
+  anchors.left: parent.left
+  size: 16 16
+  text: +
+
+StatName < Label
+  anchors.top: parent.top
+  anchors.left: prev.right
+  margin-left: 5
+  text-align: center
+
+StatPoints < Label
+  id: points
+  anchors.top: parent.top
+  anchors.right: parent.right
+  text-align: center
+  text-auto-resize: true
+
+StatsButtonMinus < Button
+  id: minusButton
+  anchors.top: parent.top
+  anchors.left: parent.left
+  margin-top: 17
+  size: 16 16
+  text: -
+  visible: false
+
+StatInfo < Label
+  anchors.bottom: parent.bottom
+  anchors.left: parent.left
+  text-auto-resize: true
+  margin-left: 20
+
+StatInfoValue < Label
+  id: value
+  anchors.bottom: parent.bottom
+  anchors.right: parent.right
+  text-auto-resize: true
+
+MiniWindow
+  id: characterStatsWindow
+  !text: 'Character Stats'
+  icon: /images/topbuttons/character_stats
+  @onClose: modules.game_characterstats.onMiniWindowClose()
+  &save: true
+  &autoOpen: 4
+  height: 200
+
+  MiniWindowContents
+    padding-left: 5
+    padding-right: 5
+    layout: verticalBox
+      spacing: 5
+    
+    Panel
+      margin-top: 5
+      height: 16
+      Label
+        id: remainingPoints
+        anchors.top: parent.top
+        anchors.left: parent.left
+        text-auto-resize: true
+        !text: 'Points: 10'
+      Button
+        anchors.top: parent.top
+        anchors.right: parent.right
+        text: Reset
+        size: 60 16
+        @onClick: modules.game_characterstats.resetStats()
+
+    HorizontalSeparator
+
+    StatsPanel
+      id: strength
+      StatsButton
+      StatName
+        !text: 'Strength'
+      StatPoints
+        !text: '10'
+      StatsButtonMinus
+      StatInfo
+        !text: 'Physical damage'
+      StatInfoValue
+        !text: '+10%'
+
+    HorizontalSeparator
+
+    StatsPanel
+      id: intelligence
+      StatsButton
+      StatName
+        !text: 'Intelligence'
+      StatPoints
+        !text: '10'
+      StatsButtonMinus
+      StatInfo
+        !text: 'Elemental damage'
+      StatInfoValue
+        !text: '+10%'
+
+    HorizontalSeparator
+
+    StatsPanel
+      id: dexterity
+      StatsButton
+      StatName
+        !text: 'Dexterity'
+      StatPoints
+        !text: '15'
+      StatsButtonMinus
+      StatInfo
+        !text: 'Attack speed'
+      StatInfoValue
+        !text: '+15%'
+
+    HorizontalSeparator
+
+    StatsPanel
+      id: vitality
+      StatsButton
+      StatName
+        !text: 'Vitality'
+      StatPoints
+        !text: '10'
+      StatsButtonMinus
+      StatInfo
+        !text: 'Maximum health'
+      StatInfoValue
+        !text: '+10%'
+
+    HorizontalSeparator
+
+    StatsPanel
+      id: spirit
+      StatsButton
+      StatName
+        !text: 'Spirit'
+      StatPoints
+        !text: '10'
+      StatsButtonMinus
+      StatInfo
+        !text: 'Maximum mana'
+      StatInfoValue
+        !text: '+10%'

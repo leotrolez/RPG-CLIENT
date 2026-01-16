@@ -1,0 +1,4 @@
+As we added sound to the game, now, if you wanted make this one work,
+You should add your sound inside of client_sounds/music
+
+Create folder music if not exists

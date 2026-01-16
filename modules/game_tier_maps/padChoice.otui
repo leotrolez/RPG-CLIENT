@@ -1,0 +1,166 @@
+Window
+  size: 250 530
+  image-source: /images/ui/panel_map
+  image-border: 4
+  color: #FFFFFF
+  text: "Choose Portal Visual"
+  anchors.centerIn: parent
+  @onEscape: hideChoiceWindow()
+
+  Label
+    id: lblTitle
+    text: "You can buy new one on Store"
+    color: #FFFFFF
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.top
+    margin-top: 10
+  
+  Button
+    id: btnDefault
+    text: "Default Teleport"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: lblTitle.bottom
+    margin-top: 30
+    color: #FFFFFF
+    @onClick: onOptionClicked(0)
+
+  Button
+    id: btnStone
+    text: "Stone Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnDefault.bottom
+    margin-top: 15
+    color: #c9c9c9
+    @onClick: onOptionClicked(1)
+
+  Button
+    id: btnGold
+    text: "Golden Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnStone.bottom
+    margin-top: 15
+    color: #fff07d
+    @onClick: onOptionClicked(2)
+  
+  Button
+    id: btnBlood
+    text: "Blood Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnGold.bottom
+    margin-top: 15
+    color: #ff5542
+    @onClick: onOptionClicked(3)
+  
+  Button
+    id: btnPoisonous
+    text: "Poisonous Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnBlood.bottom
+    margin-top: 15
+    color: #22bf73
+    @onClick: onOptionClicked(4)
+  
+  Button
+    id: btnMaze
+    text: "Maze Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnPoisonous.bottom
+    margin-top: 15
+    color: #c035db
+    @onClick: onOptionClicked(5)
+  
+  Button
+    id: btnRoyal
+    text: "Royal Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnMaze.bottom
+    margin-top: 15
+    color: #4fe3a5
+    @onClick: onOptionClicked(6)
+  
+  Button
+    id: btnDemonic
+    text: "Demonic Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnRoyal.bottom
+    margin-top: 15
+    color: #e31e38
+    @onClick: onOptionClicked(7)
+  
+  Button
+    id: btnPalace
+    text: "Palace Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnDemonic.bottom
+    margin-top: 15
+    color: #f0ba26
+    @onClick: onOptionClicked(8)
+  
+  Button
+    id: btnLion
+    text: "Lion Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnPalace.bottom
+    margin-top: 15
+    color: #a66d03
+    @onClick: onOptionClicked(9)
+  
+  Button
+    id: btnUnderwater
+    text: "Underwater Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnLion.bottom
+    margin-top: 15
+    color: #1382ad
+    @onClick: onOptionClicked(10)
+  
+  Button
+    id: btnDivine
+    text: "Divine Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnUnderwater.bottom
+    margin-top: 15
+    color: #f3fa2a
+    @onClick: onOptionClicked(11)
+  
+  Button
+    id: btnInferno
+    text: "Inferno Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnDivine.bottom
+    margin-top: 15
+    color: #f76a0c
+    @onClick: onOptionClicked(12)
+  
+  Button
+    id: btnJade
+    text: "Jade Portal"
+    size: 160 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: btnInferno.bottom
+    margin-top: 15
+    color: #27f2a8
+    @onClick: onOptionClicked(13)
+
+  Button
+    id: btnCancel
+    text: "Cancel"
+    size: 80 25
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.bottom
+    margin-bottom: 10
+    color: #FFFFFF
+    @onClick: hideChoiceWindow()

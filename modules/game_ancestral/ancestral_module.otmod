@@ -1,0 +1,10 @@
+Module
+  name: ancestral_module
+  description: Ancestral Store
+  author: Ancestral
+  sandboxed: true
+  scripts: [configs, ancestral_module]
+  autoload: true
+  autoload-priority: 1001
+  @onLoad: init()
+  @onUnload: terminate()

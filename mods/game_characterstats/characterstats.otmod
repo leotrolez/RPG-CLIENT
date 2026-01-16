@@ -1,0 +1,10 @@
+Module
+  name: game_characterstats
+  description: Character Stats
+  author: Oen
+  website: None
+  sandboxed: true
+  autoload: true
+  scripts: [ characterstats ]
+  @onLoad: init()
+  @onUnload: terminate()

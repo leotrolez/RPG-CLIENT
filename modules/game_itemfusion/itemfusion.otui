@@ -1,0 +1,105 @@
+Window
+  size: 400 300
+  image-source: /images/ui/panel_map3
+  image-border: 10
+  image-border-top: 40
+  image-border-bottom: 40
+  text: Item Fusion
+  anchors.horizontalCenter: parent.horizontalCenter
+  anchors.verticalCenter: parent.verticalCenter
+  @onEscape: close()
+  @onExit: close()
+
+  Button
+    id: closeButton
+    text: "X"
+    size: 22 22
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 1
+    margin-right: 1
+    @onClick: close()
+
+  Label
+    id: instruction
+    text: "Insert 3 identical items to fuse"
+    anchors.top: parent.top
+    margin-top: 30
+    anchors.horizontalCenter: parent.horizontalCenter
+    auto-resize: true
+
+  Panel
+    id: inputPanel
+    anchors.top: instruction.bottom
+    margin-top: 10
+    anchors.horizontalCenter: parent.horizontalCenter
+    size: 150 60
+    layout: horizontalBox
+    spacing: 10
+
+    Item
+      id: item1
+      image-source: /images/ui/rarity_white
+      margin-top: 10
+      size: 50 50
+      virtual: true
+
+    Item
+      id: item2
+      image-source: /images/ui/rarity_white
+      margin-top: 10
+      size: 50 50
+      virtual: true
+
+    Item
+      id: item3
+      image-source: /images/ui/rarity_white
+      margin-top: 10
+      size: 50 50
+      virtual: true
+
+  Panel
+    id: separator
+    anchors.top: inputPanel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+    height: 2
+    background-color: #FFFFFF
+
+  Label
+    id: fusionText
+    text: "Fusion:"
+    anchors.top: separator.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 10
+    auto-resize: true
+
+  Item
+    id: resultItem
+    image-source: /images/ui/item-blessed
+    anchors.top: fusionText.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 10
+    size: 50 50
+    virtual: true
+
+  Panel
+    id: buttonsPanel
+    anchors.bottom: parent.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    size: 200 40
+    layout: horizontalBox
+    spacing: 10
+
+    Button
+      id: fusion
+      !text: tr("Fuse")
+      expand: true
+      @onClick: modules.game_itemfusion.fuseItems()
+
+    Button
+      id: clear
+      !text: tr("Clear")
+      expand: true
+      @onClick: modules.game_itemfusion.clearItems()

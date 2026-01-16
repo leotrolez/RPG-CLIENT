@@ -1,0 +1,187 @@
+CharacterWidget < FlatPanel
+  padding: 7
+  padding-top: 3
+  border-width: 1
+  border-color: alpha
+  &updateOnStates: |
+    function(self)
+      local children = self:getChildren()
+      for i=1,#children do
+        children[i]:setOn(self:isFocused())
+      end
+    end
+  @onFocusChange: self:updateOnStates()
+  @onSetup: self:updateOnStates()
+
+  $focus:
+    border-width: 3
+    border-color: #0084E2
+
+  Label
+    id: name
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 3
+    height: 21
+    text-align: center
+    color: #E2BD00
+
+  Panel
+    id: outfit
+    image-source: /images/ui/window
+    image-border: 1
+    anchors.top: prev.bottom
+    anchors.bottom: next.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 1
+    margin-bottom: 1
+
+    UILabel
+      image-source: /images/ui/window
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      anchors.top: parent.top
+
+    UILabel      
+      image-source: /images/ui/bossbar_outfit
+      size: 80 80
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.bottom
+      margin-bottom: 30
+      margin-left: 5
+      image-color: #FFD800
+
+
+    UICreature
+      id: creature
+      anchors.centerIn: parent
+      size: 72 72
+
+  FlatPanel
+    id: info
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 36
+
+    Label
+      id: vocation
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 4
+      color: #e5dede
+
+    Label
+      id: level
+      anchors.top: vocation.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 1
+      &baseText: 'Level: %s'
+      color: #e5dede
+
+StaticMainWindow
+  id: charactersWindow
+  !text: tr('Character List')
+  image-source: /images/ui/window
+  visible: false
+  size: 800 600
+  $mobile:
+    size: 600 400
+  @onEnter: CharacterList.doLogin()
+  @onEscape: CharacterList.hide(true)
+  @onSetup: |
+    g_keyboard.bindKeyPress('Up', function() self:getChildById('characters'):focusPreviousChild(KeyboardFocusReason) end, self)
+    g_keyboard.bindKeyPress('Down', function() self:getChildById('characters'):focusNextChild(KeyboardFocusReason) end, self)
+    g_keyboard.bindKeyPress('Left', function() self:getChildById('characters'):focusPreviousChild(KeyboardFocusReason) end, self)
+    g_keyboard.bindKeyPress('Right', function() self:getChildById('characters'):focusNextChild(KeyboardFocusReason) end, self)  
+
+  ScrollablePanel
+    id: characters
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: scrollBar.left
+    anchors.bottom: separator.top
+    margin-bottom: 1
+    border: 1 #0E0F11
+    padding: 1
+    focusable: false
+    auto-focus: first
+    layout:
+      type: grid
+      cell-size: 185 215
+      flow: true
+      cell-spacing: 2
+    vertical-scrollbar: scrollBar
+
+  VerticalScrollBar
+    id: scrollBar
+    anchors.top: parent.top
+    anchors.bottom: separator.top
+    anchors.right: parent.right
+    margin-bottom: 5
+    step: 50
+    pixels-scroll: true
+
+  Label
+    id: accountStatusCaption
+    !text: tr('Account Status') .. ':'
+    anchors.left: autoReconnect.right
+    anchors.top: separator.bottom
+    anchors.horizontalCenter: separator.horizontalCenter
+    margin-top: 7
+    color: #e5dede
+
+  Label
+    id: accountStatusLabel
+    !text: tr('Free Account')
+    anchors.top: accountStatusCaption.bottom
+    anchors.horizontalCenter: accountStatusCaption.horizontalCenter
+    text-auto-resize: true
+    color: #e5dede
+
+    $on:
+      color: #FF0000
+
+  HorizontalSeparator
+    id: separator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: next.top
+    margin-bottom: 5
+
+  Button
+    id: autoReconnect
+    width: 145
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-bottom: 2
+    margin-left: 1
+    
+    $!on:
+      image-color: red    
+      !text: tr('Auto reconnect: Off')
+
+    $on:
+      !text: tr('Auto reconnect: On')
+      image-color: green
+
+  Button
+    id: buttonOk
+    !text: tr('Ok')
+    width: 64
+    anchors.right: next.left
+    anchors.bottom: parent.bottom
+    margin-right: 10
+    margin-bottom: 2
+    @onClick: CharacterList.doLogin()
+
+  Button
+    id: buttonCancel
+    !text: tr('Cancel')
+    width: 70
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-bottom: 2
+    @onClick: CharacterList.hide(true)

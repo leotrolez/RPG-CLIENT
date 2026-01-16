@@ -1,0 +1,72 @@
+LookItemName < Label
+  phantom: true
+  height: 18
+  font: verdana-14px-rounded
+  text-horizontal-auto-resize: true
+  text-align: center
+  color: #ffffff
+  margin-top: 4
+
+TooltipSeparator < UIWidget
+  image-source: /images/ui/tooltip_separator
+  height: 2
+  margin-top: 4
+  margin-left: 7
+  margin-right: 7
+
+LookItemIconAttribute < UIWidget
+  font: verdana-11px-rounded
+  phantom: true
+  height: 22
+  text-offset: 27 0
+  text-horizontal-auto-resize: true
+  text-align: left
+  margin-top: 4
+
+  UIWidget
+    id: icon
+    anchors.left: parent.left
+    anchors.verticalcenter: parent.verticalcenter
+    image-source: icons
+    phantom: true
+    margin-left: 7
+    size: 19 19
+
+RarityIcons < UIWidget
+  layout:
+    type: verticalBox
+  height: 50
+  margin-top: 4
+
+StarsContainer < UIWidget
+  layout:
+    type: horizontalBox
+  height: 22
+  margin-top: 4
+
+UIMiniWindow
+  id: tooltipWindow
+  focusable: false
+  phantom: true
+  
+  UIWidget
+    anchors.fill: parent
+    image-source: /images/ui/tooltip_frame
+    phantom: true
+    
+  Item
+    id: item
+    anchors.top: parent.top
+    anchors.horizontalcenter: parent.horizontalcenter
+    margin-top: 7
+    image-source: /images/ui/item_phantom
+    
+
+  ScrollablePanel
+    id: list
+    anchors.fill: parent
+    anchors.top: prev.bottom
+    margin-left: 6
+    margin-right: 6
+    layout:
+      type: verticalBox

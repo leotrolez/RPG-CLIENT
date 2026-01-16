@@ -1,0 +1,9 @@
+Module
+  name: game_tier_maps
+  author: Alexv45
+  description: Tier Maps
+  autoload: true
+  sandboxed: false
+  scripts: [ tiermaps ]
+  @onLoad: init()
+  @onUnload: terminate()

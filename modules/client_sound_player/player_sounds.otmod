@@ -1,0 +1,9 @@
+Module
+  name: client_sound_player
+  description: Sound system
+  author: Alexv45
+  website: https://opengamescommunity.com
+  autoload: true
+  scripts: [ player_sounds ]
+  @onLoad: init()
+  @onUnload: terminate()

@@ -1,0 +1,244 @@
+HighScoreData < UIWidget
+  height: 35
+
+  VerticalSeparator
+    anchors.top: parent.top
+    anchors.left: parent.left
+    height: 35
+
+  Label
+    anchors.top: parent.top
+    anchors.left: prev.right
+    anchors.bottom : parent.bottom
+    id: rank
+    width: 40
+    text: 1
+    text-align: center
+    color: #dfdfdfcf
+    phantom: true
+
+  VerticalSeparator
+    anchors.top: parent.top
+    anchors.left: prev.right
+    height: 35
+
+  UICreature
+    id: outfit
+    anchors.top: parent.top
+    anchors.left: prev.right
+    padding-left: 5
+    size: 55 40
+    phantom: true
+    
+  VerticalSeparator
+    anchors.top: parent.top
+    anchors.left: prev.right
+    height: 35
+
+  Label
+    anchors.top: parent.top
+    anchors.left: prev.right
+    anchors.bottom : parent.bottom
+    id: name
+    width: 190
+    text: Czarny Kumpel
+    text-align: center
+    color: #dfdfdfcf
+    phantom: true
+
+  VerticalSeparator
+    anchors.top: parent.top
+    anchors.left: prev.right
+    height: 35
+
+  Label
+    anchors.top: parent.top
+    anchors.left: prev.right
+    anchors.bottom : parent.bottom
+    text-align: center
+    id: voc
+    width: 116
+    text: Paladin
+    color: #dfdfdfcf
+    phantom: true
+
+  VerticalSeparator
+    anchors.top: parent.top
+    anchors.left: prev.right
+    height: 35
+
+  Label
+    anchors.top: parent.top
+    anchors.left: prev.right
+    anchors.bottom : parent.bottom
+    text-align: center
+    id: level
+    width: 66
+    text: 421
+    color: #dfdfdfcf
+    phantom: true
+
+  VerticalSeparator
+    anchors.top: parent.top
+    anchors.left: prev.right
+    height: 35
+
+  Label
+    anchors.top: parent.top
+    anchors.left: prev.right
+    anchors.right: parent.right
+    anchors.bottom : parent.bottom
+    text-align: center
+    id: experience
+    text: 632,262,512,124
+    color: #dfdfdfcf
+    phantom: true
+
+  VerticalSeparator
+    anchors.top: parent.top
+    anchors.left: prev.right
+    height: 35
+
+MainWindow
+  id: lootStatsMain
+  !text: tr('Highscores')
+  size: 698 533
+  padding-top: 3
+  @onEscape: modules.game_highscore.hide()
+
+  Button
+    id: closeButton
+    text: X
+    width: 60
+    anchors.top: parent.top
+    anchors.right: parent.right
+    @onClick: modules.game_highscore.hide()
+
+  Panel
+    id: content
+    margin-top: 20
+    anchors.fill: parent
+    padding: 10
+
+    MiniPanel
+      id: filters
+      text: Highscores Filter
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      height: 54
+      
+      ComboBox
+        id: vocationBox
+        anchors.top: parent.top
+        anchors.right: next.left
+        width: 200
+        margin-right: 10
+        @onSetup: |
+          self:addOption("All Vocations")
+          self:addOption("Sorcerer")
+          self:addOption("Druid")
+          self:addOption("Paladin")
+          self:addOption("Knight")
+          self:addOption("Illusionist")
+      
+      ComboBox
+        id: categoryBox
+        anchors.top: parent.top
+        anchors.right: parent.right
+        width: 200
+
+      Button
+        id: showOwn
+        anchors.top: parent.top
+        anchors.left: parent.left
+        text: Show Own Rank
+
+    FlatPanel
+      id: data
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom : page.top
+      margin-bottom: 15
+      margin-top: 10
+      padding: 1
+      padding-top: 14
+      layout:
+        type: verticalBox
+      UIWidget
+        height: 14
+
+    Label
+      anchors.top: data.top
+      anchors.left: data.left
+      text: Rank
+      size: 41 14
+
+    Label
+      anchors.top: data.top
+      anchors.left: prev.right
+      text: Outfit
+      size: 45 14
+
+    Label
+      anchors.top: data.top
+      anchors.left: prev.right
+      text: Character
+      size: 190 14
+
+    Label
+      anchors.top: data.top
+      anchors.left: prev.right
+      text: Vocation
+      size: 116 14
+
+    Label
+      anchors.top: data.top
+      anchors.left: prev.right
+      text: Level
+      size: 66 14
+
+    Label
+      id: experience
+      anchors.top: data.top
+      anchors.left: prev.right
+      anchors.right: data.right
+      text: Experience
+      height: 14
+
+    Label
+      id: page
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.bottom
+      text: "1 / 50"
+      margin-bottom: 6
+      text-offset: 0 -5
+      text-align: center
+      width: 90
+
+    Button
+      id: next
+      text: >
+      anchors.left: prev.right
+      anchors.bottom: prev.bottom
+
+    Button
+      id: nextLast
+      text: >>
+      anchors.left: prev.right
+      anchors.top: prev.top
+      margin-left: 5
+
+    Button
+      id: prev
+      text: <
+      anchors.right: page.left
+      anchors.top: prev.top
+
+    Button
+      id: prevLast
+      text: <<
+      anchors.right: prev.left
+      anchors.top: prev.top
+      margin-right: 5

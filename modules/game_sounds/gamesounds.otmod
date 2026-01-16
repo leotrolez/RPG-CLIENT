@@ -1,0 +1,13 @@
+Module
+  name: game_sounds
+  description: Handels sounds for Rising Client.
+  author: Shawak
+  website: none
+  
+  autoload: true
+  autoload-priority: 1000
+  sandbox: true
+  
+  scripts: [ gamesounds ]
+  @onLoad: init()
+  @onUnload: terminate()

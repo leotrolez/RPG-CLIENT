@@ -1,0 +1,12 @@
+Module
+  name: game_wings
+  description: changes the wings offset depending on the direction the player is going.
+  author: Vagner
+  website: globalking.com.br
+  autoload: true
+  reloadable: true
+  sandboxed: true
+  version: 1.0
+  scripts: [ game_wings ]
+  @onLoad: init()
+  @onUnload: terminate()

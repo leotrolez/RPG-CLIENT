@@ -1,0 +1,73 @@
+MiniWindow
+  id: reputationWindow
+  !text: tr('Reputation')
+  icon: /images/topbuttons/reputation
+  @onClose: modules.client_reputation.onMiniWindowClose()
+  visible: false
+  &save: true
+
+  MiniWindowContents
+    padding-left: 3
+    padding-right: 18
+    layout: verticalBox
+    spacing: 2
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+
+    Panel
+      id: contentsPanel
+      layout: verticalBox
+      spacing: 2
+
+ReputationPanel < Panel
+  height: 80
+  layout: verticalBox
+  margin-top: 5
+  margin-bottom: 10
+
+  Label
+    id: factionImage
+    height: 16
+    width: 15
+    margin-left: 149
+    image-offset: -73 0
+
+  Label
+    id: name
+    text-align: left
+    height: 18
+    width: 18
+    margin-top: -17
+    margin-left: 45
+  
+  ProgressBar
+    id: reputationBar
+    minimum: 0
+    maximum: 100
+    value: 0
+    height: 16
+    width: 200
+    margin-top: 2
+    margin-bottom: 2
+    image-source: /images/ui/progressbar
+
+  Label
+    id: rank
+    text-align: center
+    color: orange
+
+  Label
+    id: coinImage
+    height: 16
+    width: 15
+    margin-left: 149
+    image-offset: -73 0
+
+  Label
+    id: coin
+    text-align: center
+    height: 18
+    width: 18
+    margin-top: -33

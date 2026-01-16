@@ -1,0 +1,8 @@
+Font
+  name: verdana-14px-rounded
+  texture: verdana-14px-rounded_cp1252
+  height: 16
+  glyph-size: 16 16
+  y-offset: -2
+  spacing: -1 -3
+  space-width: 4

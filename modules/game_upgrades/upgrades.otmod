@@ -1,0 +1,10 @@
+Module
+  name: game_upgrades
+  description: Character upgrades store
+  author: Idler
+  website: http://idler.live
+  sandboxed: true
+  autoload: true
+  scripts: [ upgrades ]
+  @onLoad: init()
+  @onUnload: terminate() 

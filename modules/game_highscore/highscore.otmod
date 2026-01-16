@@ -1,0 +1,10 @@
+Module
+  name: game_highscore
+  author: BoTeQ
+
+  sandboxed: true
+  autoload: true
+  scripts: [ highscore ]
+  dependencies: [ game_interface ]
+  @onLoad: load()
+  @onUnload: unload()

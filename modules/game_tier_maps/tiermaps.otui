@@ -1,0 +1,84 @@
+Window
+  size: 350 250
+  image-source: /images/ui/panel_map
+  image-border: 4
+  color: #FFC21C
+  text: Waystone Teleporter
+  anchors.horizontalCenter: parent.horizontalCenter
+  anchors.verticalCenter: parent.verticalCenter
+  @onEscape: hideWindow()
+  @onExit: hideWindow()
+
+  Panel
+    id: panelText
+    size: 160 30
+    text: Place a Waystone
+    color: #FFFFFF
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.top
+    margin-top: 10
+
+  Item
+    id: slot
+    virtual: true
+    size: 60 60
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: panelText.bottom
+    margin-top: 40
+    onDrop: onDrop()
+
+  Button
+    id: btnHelp
+    text: "Help"
+    height: 28
+    margin-top: 25
+    color: #FFFFFF
+    anchors.horizontalCenter: slot.horizontalCenter
+    anchors.verticalCenter: slot.bottom
+    @onClick: showHelp()
+
+  Button
+    id: btnChoice
+    text: "Choice Portal Visual"
+    height: 28
+    width: 150
+    margin-top: 20
+    color: #FFFFFF
+    anchors.horizontalCenter: slot.horizontalCenter
+    anchors.verticalCenter: btnHelp.bottom
+    @onClick: requestChoice()
+
+  Button
+    id: btnWrap
+    text: "Wrap"
+    expand: true
+    anchors.horizontalCenter: btnHelp.horizontalCenter
+    anchors.verticalCenter: btnHelp.bottom
+    margin-top: 58
+    height: 32
+    color: #FFFFFF
+    @onClick: requestWrap()
+
+  Button
+    id: btnTeleport
+    text: "Open Portal"
+    expand: true
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 3
+    margin-bottom: 10
+    height: 32
+    color: #FFFFFF
+    @onClick: requestTeleport()
+
+  Button
+    id: btnDecline
+    text: "Close"
+    expand: true
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-right: 3
+    margin-bottom: 10
+    height: 32
+    color: #FFFFFF
+    @onClick: clearSlot()
